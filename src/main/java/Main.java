@@ -4,6 +4,7 @@ import lt.esdc.shape.validator.ConeValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Main {
             for (Cone cone : cones) {
                 logger.info(cone.toString());
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             logger.error("Ошибка при чтении файла", e);
         }
     }

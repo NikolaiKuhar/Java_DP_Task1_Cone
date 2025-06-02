@@ -1,8 +1,11 @@
 package lt.esdc.shape.coneReader;
 
 import lt.esdc.shape.entity.Cone;
+import lt.esdc.shape.exception.ConeException;
 import lt.esdc.shape.factory.ConeFactory;
 import lt.esdc.shape.validator.LineValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,6 +16,7 @@ import java.util.stream.Stream;
 
 public class ConeFileReader {
 
+    private static final Logger logger = LoggerFactory.getLogger(ConeFileReader.class);
     private final LineValidator lineValidator = new LineValidator();
     private final ConeFactory coneFactory = new ConeFactory();
 
@@ -21,11 +25,15 @@ public class ConeFileReader {
 
         try (Stream<String> lines = Files.lines(filePath)) {
             lines.filter(lineValidator::isValid)
-                    .map(coneFactory::createFromLine)
-                    .filter(cone -> cone != null)
-                    .forEach(cones::add);
+                    .forEach(line -> {
+                        try {
+                            Cone cone = coneFactory.createFromLine(line);
+                            cones.add(cone);
+                        } catch (ConeException e) {
+                            logger.warn("Пропущена строка из-за ошибки создания Cone: {}", e.getMessage());
+                        }
+                    });
         }
-
         return cones;
     }
 }
