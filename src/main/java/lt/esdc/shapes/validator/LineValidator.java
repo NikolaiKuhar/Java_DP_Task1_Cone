@@ -1,4 +1,4 @@
-package lt.esdc.shape.validator;
+package lt.esdc.shapes.validator;
 
 public class LineValidator {
     private static final int EXPECTED_TOKEN_COUNT = 5;

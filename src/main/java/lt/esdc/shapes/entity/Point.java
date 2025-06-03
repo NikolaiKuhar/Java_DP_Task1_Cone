@@ -1,4 +1,4 @@
-package lt.esdc.shape.entity;
+package lt.esdc.shapes.entity;
 
 public class Point {
     private double x;

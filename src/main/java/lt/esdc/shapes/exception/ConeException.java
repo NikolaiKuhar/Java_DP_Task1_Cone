@@ -1,4 +1,4 @@
-package lt.esdc.shape.exception;
+package lt.esdc.shapes.exception;
 
 public class ConeException extends Exception {
 

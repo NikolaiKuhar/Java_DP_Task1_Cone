@@ -1,6 +1,6 @@
-import lt.esdc.shape.entity.Cone;
-import lt.esdc.shape.entity.Point;
-import lt.esdc.shape.service.ConeService;
+import lt.esdc.shapes.entity.Cone;
+import lt.esdc.shapes.entity.Point;
+import lt.esdc.shapes.service.ConeService;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;

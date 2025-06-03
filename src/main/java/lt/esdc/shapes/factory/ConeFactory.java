@@ -1,8 +1,8 @@
-package lt.esdc.shape.factory;
+package lt.esdc.shapes.factory;
 
-import lt.esdc.shape.entity.Cone;
-import lt.esdc.shape.entity.Point;
-import lt.esdc.shape.exception.ConeException;
+import lt.esdc.shapes.entity.Cone;
+import lt.esdc.shapes.entity.Point;
+import lt.esdc.shapes.exception.ConeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

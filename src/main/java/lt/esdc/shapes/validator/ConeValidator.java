@@ -1,6 +1,6 @@
-package lt.esdc.shape.validator;
+package lt.esdc.shapes.validator;
 
-import lt.esdc.shape.entity.Cone;
+import lt.esdc.shapes.entity.Cone;
 
 public class ConeValidator {
     public boolean isValid(Cone cone) {

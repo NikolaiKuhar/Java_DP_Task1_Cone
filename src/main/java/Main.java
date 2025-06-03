@@ -1,6 +1,8 @@
-import lt.esdc.shape.coneReader.ConeFileReader;
-import lt.esdc.shape.entity.Cone;
-import lt.esdc.shape.validator.ConeValidator;
+import lt.esdc.shapes.reader.ConeFileReader;
+import lt.esdc.shapes.entity.Cone;
+import lt.esdc.shapes.repository.ConeRepository;
+import lt.esdc.shapes.validator.ConeValidator;
+import lt.esdc.shapes.warehouse.Warehouse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +20,8 @@ public class Main {
 
         ConeFileReader reader = new ConeFileReader();
         ConeValidator validator = new ConeValidator();
+        Warehouse warehouse = Warehouse.getInstance();
+        ConeRepository repository = ConeRepository.getInstance();
 
         try {
             List<Cone> cones = reader.readConesFromFile(filePath).stream()
@@ -26,6 +30,9 @@ public class Main {
 
             logger.info("Загруженные конусы:");
             for (Cone cone : cones) {
+                cone.addObserver(warehouse);
+                warehouse.put(cone.getName(), cone);
+                repository.add(cone);
                 logger.info(cone.toString());
             }
         } catch (IOException e) {

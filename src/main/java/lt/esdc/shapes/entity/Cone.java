@@ -1,12 +1,16 @@
-package lt.esdc.shape.entity;
+package lt.esdc.shapes.entity;
 
-import java.util.Objects;
+import lt.esdc.shapes.observer.ConeObserver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cone {
     private String name;
     private Point baseCenter;
     private double radius;
     private double height;
+    private final List<ConeObserver> observers = new ArrayList<>();
 
     public Cone(String name, Point baseCenter, double radius, double height) {
         this.name = name;
@@ -29,6 +33,30 @@ public class Cone {
 
     public double getHeight() {
         return height;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+        notifyObservers();
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+        notifyObservers();
+    }
+
+    public void addObserver(ConeObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(ConeObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void notifyObservers() {
+        for (ConeObserver observer : observers) {
+            observer.onConeChanged(this);
+        }
     }
 
     @Override

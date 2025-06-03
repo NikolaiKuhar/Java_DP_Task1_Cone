@@ -1,9 +1,9 @@
-package lt.esdc.shape.coneReader;
+package lt.esdc.shapes.reader;
 
-import lt.esdc.shape.entity.Cone;
-import lt.esdc.shape.exception.ConeException;
-import lt.esdc.shape.factory.ConeFactory;
-import lt.esdc.shape.validator.LineValidator;
+import lt.esdc.shapes.entity.Cone;
+import lt.esdc.shapes.exception.ConeException;
+import lt.esdc.shapes.factory.ConeFactory;
+import lt.esdc.shapes.validator.LineValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

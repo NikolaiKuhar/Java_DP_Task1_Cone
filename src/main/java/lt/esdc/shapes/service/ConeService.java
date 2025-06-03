@@ -1,6 +1,6 @@
-package lt.esdc.shape.service;
+package lt.esdc.shapes.service;
 
-import lt.esdc.shape.entity.Cone;
+import lt.esdc.shapes.entity.Cone;
 
 public class ConeService {
 

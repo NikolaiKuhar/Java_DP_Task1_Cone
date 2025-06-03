@@ -4,10 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6353e556-2bee-4422-b0ad-ad1f9c5a5619" name="Changes" comment="add log4j">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/exception/ConeException.java" afterDir="false" />
+    <list default="true" id="6353e556-2bee-4422-b0ad-ad1f9c5a5619" name="Changes" comment="add exception">
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/observer/ConeObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/ConeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/Specification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/VolumeRangeSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/ConeParameters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/Warehouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/factory/ConeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/factory/ConeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/coneReader/ConeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/reader/ConeFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/entity/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Cone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/entity/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/exception/ConeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/exception/ConeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/factory/ConeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/factory/ConeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/service/ConeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/validator/ConeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/validator/ConeValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shape/validator/LineValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/validator/LineValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ConeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ConeServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +132,8 @@
       <workItem from="1748451879730" duration="3237000" />
       <workItem from="1748786748817" duration="72000" />
       <workItem from="1748786943962" duration="2424000" />
-      <workItem from="1748886730380" duration="870000" />
+      <workItem from="1748886730380" duration="4794000" />
+      <workItem from="1748973197284" duration="2608000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -168,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748788495308</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add exception">
+      <option name="closed" value="true" />
+      <created>1748887964389</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748887964389</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +214,7 @@
     <MESSAGE value="Реализация каркаса задания части 1" />
     <MESSAGE value="add tests and main class" />
     <MESSAGE value="add log4j" />
-    <option name="LAST_COMMIT_MESSAGE" value="add log4j" />
+    <MESSAGE value="add exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="add exception" />
   </component>
 </project>
