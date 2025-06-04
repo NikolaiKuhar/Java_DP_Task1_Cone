@@ -1,3 +1,5 @@
+package lt.esdc.shapes;
+
 import lt.esdc.shapes.reader.ConeFileReader;
 import lt.esdc.shapes.entity.Cone;
 import lt.esdc.shapes.repository.ConeRepository;
