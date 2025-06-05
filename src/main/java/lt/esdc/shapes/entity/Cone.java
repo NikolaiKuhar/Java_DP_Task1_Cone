@@ -1,26 +1,27 @@
 package lt.esdc.shapes.entity;
 
 import lt.esdc.shapes.observer.ConeObserver;
+import lt.esdc.shapes.observer.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cone {
-    private String name;
+public class Cone implements Observable {
+    private final String id;
     private Point baseCenter;
     private double radius;
     private double height;
     private final List<ConeObserver> observers = new ArrayList<>();
 
-    public Cone(String name, Point baseCenter, double radius, double height) {
-        this.name = name;
+    public Cone(String id, Point baseCenter, double radius, double height) {
+        this.id = id;
         this.baseCenter = baseCenter;
         this.radius = radius;
         this.height = height;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     public Point getBaseCenter() {
@@ -45,15 +46,18 @@ public class Cone {
         notifyObservers();
     }
 
+    @Override
     public void addObserver(ConeObserver observer) {
         observers.add(observer);
     }
 
+    @Override
     public void removeObserver(ConeObserver observer) {
         observers.remove(observer);
     }
 
-    private void notifyObservers() {
+    @Override
+    public void notifyObservers() {
         for (ConeObserver observer : observers) {
             observer.onConeChanged(this);
         }
@@ -62,7 +66,7 @@ public class Cone {
     @Override
     public String toString() {
         return "Cone{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
                 ", baseCenter=" + baseCenter +
                 ", radius=" + radius +
                 ", height=" + height +
@@ -76,15 +80,14 @@ public class Cone {
         Cone cone = (Cone) o;
         return Double.compare(cone.radius, radius) == 0 &&
                 Double.compare(cone.height, height) == 0 &&
-                name.equals(cone.name) &&
+                id.equals(cone.id) &&
                 baseCenter.equals(cone.baseCenter);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        long temp;
-        temp = Double.doubleToLongBits(radius);
+        int result = id.hashCode();
+        long temp = Double.doubleToLongBits(radius);
         result = 31 * result + baseCenter.hashCode();
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(height);

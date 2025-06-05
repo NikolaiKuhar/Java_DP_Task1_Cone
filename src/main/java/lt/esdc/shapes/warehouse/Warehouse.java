@@ -23,11 +23,12 @@ public class Warehouse implements ConeObserver {
         return instance;
     }
 
-    public void put(String id, Cone cone) {
+    public void update(String id, Cone cone) {
         double volume = service.calculateVolume(cone);
         double surfaceArea = service.calculateSurfaceArea(cone);
-        parametersMap.put(id, new ConeParameters(volume, surfaceArea));
-        logger.info("Warehouse обновлён: {} -> {}", id, parametersMap.get(id));
+        ConeParameters parameters = new ConeParameters(volume, surfaceArea);
+        parametersMap.put(id, parameters);
+        logger.info("Warehouse обновлён: {} -> {}", id, parameters);
     }
 
     public ConeParameters get(String id) {
@@ -38,9 +39,15 @@ public class Warehouse implements ConeObserver {
         return Collections.unmodifiableMap(parametersMap);
     }
 
+    public void remove(String id) {
+        parametersMap.remove(id);
+        logger.info("Удалены параметры конуса из Warehouse: {}", id);
+    }
+
+
     @Override
     public void onConeChanged(Cone cone) {
-        put(cone.getName(), cone);
-        logger.info("Обновлены параметры конуса после изменения: {}", cone.getName());
+        update(cone.getId(), cone);
+        logger.info("Обновлены параметры конуса после изменения: {}", cone.getId());
     }
-} 
+}
