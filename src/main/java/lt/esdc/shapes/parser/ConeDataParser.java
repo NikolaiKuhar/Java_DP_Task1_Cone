@@ -1,10 +1,12 @@
 package lt.esdc.shapes.parser;
 
+import lt.esdc.shapes.entity.Cone;
 import lt.esdc.shapes.exception.ConeException;
 
-public class ConeDataParser {
+public class ConeDataParser implements ConeParser<double[]> {
 
-    public double[] parseLine(String line) throws ConeException {
+    @Override
+    public double[] parse(String line) throws ConeException {
         if (line == null || line.isBlank()) {
             throw new ConeException("Пустая строка не может быть обработана");
         }

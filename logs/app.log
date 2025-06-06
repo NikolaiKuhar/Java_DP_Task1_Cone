@@ -8,7 +8,7 @@ java.nio.file.NoSuchFileException: resources\cones.txt
 	at java.nio.channels.FileChannel.open(FileChannel.java:369) ~[?:?]
 	at java.nio.file.Files.lines(Files.java:4112) ~[?:?]
 	at java.nio.file.Files.lines(Files.java:4207) ~[?:?]
-	at lt.esdc.shapes.reader.ConeFileReader.readConesFromFile(ConeFileReader.java:26) ~[classes/:?]
+	at lt.esdc.shapes.reader.ConeReader.readConesFromFile(ConeFileReader.java:26) ~[classes/:?]
 	at lt.esdc.shapes.Main.main(lt.esdc.shapes.Main.java:23) [classes/:?]
 2025-06-02 21:15:56 ERROR lt.esdc.shapes.Main:32 - Ошибка при чтении файла
 java.nio.file.NoSuchFileException: resources\cones.txt
@@ -20,7 +20,7 @@ java.nio.file.NoSuchFileException: resources\cones.txt
 	at java.nio.channels.FileChannel.open(FileChannel.java:369) ~[?:?]
 	at java.nio.file.Files.lines(Files.java:4112) ~[?:?]
 	at java.nio.file.Files.lines(Files.java:4207) ~[?:?]
-	at lt.esdc.shapes.reader.ConeFileReader.readConesFromFile(ConeFileReader.java:26) ~[classes/:?]
+	at lt.esdc.shapes.reader.ConeReader.readConesFromFile(ConeFileReader.java:26) ~[classes/:?]
 	at lt.esdc.shapes.Main.main(lt.esdc.shapes.Main.java:23) [classes/:?]
 2025-06-02 21:17:16 INFO  ConeFactory:35 - Успешно создан Cone: Cone{name='CONE_1', baseCenter=Point{x=0.0, y=0.0, z=0.0}, radius=3.0, height=4.0}
 2025-06-02 21:17:16 INFO  ConeFactory:35 - Успешно создан Cone: Cone{name='CONE_2', baseCenter=Point{x=1.0, y=2.0, z=3.0}, radius=2.5, height=5.0}

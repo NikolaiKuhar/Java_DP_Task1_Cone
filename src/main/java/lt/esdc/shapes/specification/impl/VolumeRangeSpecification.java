@@ -18,7 +18,7 @@ public class VolumeRangeSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        ConeParameters params = warehouse.get(cone.getName());
+        ConeParameters params = warehouse.get(cone.getId());
         if (params == null) {
             return false;
         }

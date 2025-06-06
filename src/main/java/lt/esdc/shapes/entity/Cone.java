@@ -59,7 +59,7 @@ public class Cone implements Observable {
     @Override
     public void notifyObservers() {
         for (ConeObserver observer : observers) {
-            observer.onConeChanged(this);
+            observer.update(this);
         }
     }
 

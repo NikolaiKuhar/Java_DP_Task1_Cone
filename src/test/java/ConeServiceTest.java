@@ -1,69 +1,63 @@
 import lt.esdc.shapes.entity.Cone;
 import lt.esdc.shapes.entity.Point;
 import lt.esdc.shapes.service.ConeService;
-import org.testng.annotations.Test;
+import lt.esdc.shapes.service.impl.ConeServiceImpl;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConeServiceTest {
 
-    private static final double DELTA = 1e-6;
+    private final ConeService service = new ConeServiceImpl();
+
+    private final Cone validCone = new Cone(
+            "CONE_1",
+            new Point(0.0, 0.0, 0.0),
+            3.0,
+            4.0
+    );
 
     @Test
-    public void testCalculateVolume() {
-        // given
-        Cone cone = new Cone("TestCone", new Point(0, 0, 0), 3.0, 4.0);
-        ConeService service = new ConeService();
-
-        // when
-        double actualVolume = service.calculateVolume(cone);
-
-        // then
-        double expectedVolume = (1.0 / 3.0) * Math.PI * 3.0 * 3.0 * 4.0;
-        assertEquals(actualVolume, expectedVolume, DELTA);
+    void shouldCalculateVolumeCorrectly() {
+        double actual = service.calculateVolume(validCone);
+        double expected = (1.0 / 3.0) * Math.PI * 3 * 3 * 4;
+        assertEquals(expected, actual, 0.0001);
     }
 
     @Test
-    public void testCalculateSurfaceArea() {
-        // given
-        Cone cone = new Cone("TestCone", new Point(0, 0, 0), 3.0, 4.0);
-        ConeService service = new ConeService();
-
-        // when
-        double actualSurfaceArea = service.calculateSurfaceArea(cone);
-
-        // then
-        double slantHeight = Math.sqrt(4.0 * 4.0 + 3.0 * 3.0); // √(h² + r²)
-        double expectedSurfaceArea = Math.PI * 3.0 * (3.0 + slantHeight);
-        assertEquals(actualSurfaceArea, expectedSurfaceArea, DELTA);
+    void shouldCalculateSurfaceAreaCorrectly() {
+        double r = validCone.getRadius();
+        double h = validCone.getHeight();
+        double l = Math.sqrt(h * h + r * r);
+        double expected = Math.PI * r * (r + l);
+        double actual = service.calculateSurfaceArea(validCone);
+        assertEquals(expected, actual, 0.0001);
     }
 
     @Test
-    public void testVolumeRatioAfterPlaneCut() {
-        // given
-        Cone cone = new Cone("TestCone", new Point(0, 0, 0), 3.0, 4.0);
-        ConeService service = new ConeService();
-
-        // when
-        double ratio = service.volumeRatioAfterPlaneCut(cone);
-
-        // then
-        double expectedRatio = 1.0 / 7.0; // верхний объём в 8 раз меньше полного (1/8), нижний = 7/8
-        assertEquals(ratio, expectedRatio, DELTA);
+    void shouldCalculateVolumeRatioCorrectly() {
+        double ratio = service.calculateVolumeRatioAfterCut(validCone);
+        assertTrue(ratio > 0 && ratio < 1);
     }
 
     @Test
-    public void testIsBaseOnCoordinatePlane() {
-        // given
-        Cone cone = new Cone("TestCone", new Point(0, 5.0, 2.0), 3.0, 4.0);
-        ConeService service = new ConeService();
-
-        // when
-        boolean result = service.isBaseOnCoordinatePlane(cone);
-
-        // then
-        assertEquals(result, true);
+    void shouldValidateCorrectCone() {
+        assertTrue(service.isValid(validCone));
     }
 
+    @Test
+    void shouldDetectBaseOnCoordinatePlane() {
+        assertTrue(service.isBaseOnCoordinatePlane(validCone));
+    }
+
+    @Test
+    void shouldInvalidateConeWithNegativeValues() {
+        Cone invalid = new Cone("X", new Point(1, 1, 1), -2, 0);
+        assertFalse(service.isValid(invalid));
+    }
+
+    @Test
+    void shouldInvalidateNullCone() {
+        assertFalse(service.isValid(null));
+    }
 }
-

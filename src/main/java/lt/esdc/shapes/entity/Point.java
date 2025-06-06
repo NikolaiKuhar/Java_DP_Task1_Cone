@@ -1,9 +1,9 @@
 package lt.esdc.shapes.entity;
 
 public class Point {
-    private double x;
-    private double y;
-    private double z;
+    private final double x;
+    private final double y;
+    private final double z;
 
     public Point(double x, double y, double z) {
         this.x = x;
@@ -25,33 +25,24 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+        return "(" + x + ", " + y + ", " + z + ")";
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return Double.compare(point.x, x) == 0 &&
-                Double.compare(point.y, y) == 0 &&
-                Double.compare(point.z, z) == 0;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Point point = (Point) obj;
+        return Double.compare(x, point.x) == 0 &&
+                Double.compare(y, point.y) == 0 &&
+                Double.compare(z, point.z) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(x);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(y);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(z);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        int result = Double.hashCode(x);
+        result = 31 * result + Double.hashCode(y);
+        result = 31 * result + Double.hashCode(z);
         return result;
     }
 }

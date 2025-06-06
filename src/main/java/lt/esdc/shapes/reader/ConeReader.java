@@ -13,18 +13,18 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConeFileReader {
-    private static final Logger logger = LoggerFactory.getLogger(ConeFileReader.class);
+public class ConeReader {
+    private static final Logger logger = LoggerFactory.getLogger(ConeReader.class);
     private final ConeDataParser parser = new ConeDataParser();
     private final ConeFactory factory = new ConeFactory();
 
-    public List<Cone> readConesFromFile(Path path) throws IOException {
+    public List<Cone> read(Path path) throws IOException {
         List<Cone> cones = new ArrayList<>();
 
         for (String line : Files.readAllLines(path)) {
             try {
-                double[] values = parser.parseLine(line);
-                Cone cone = factory.create(values);
+                double[] values = parser.parse(line);
+                Cone cone = factory.createFrom(values);
                 cones.add(cone);
             } catch (ConeException e) {
                 logger.warn("Пропущена строка из-за ошибки: {}", e.getMessage());

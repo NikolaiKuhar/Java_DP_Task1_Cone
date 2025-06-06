@@ -1,7 +1,7 @@
 package lt.esdc.shapes;
 
 import lt.esdc.shapes.entity.Cone;
-import lt.esdc.shapes.reader.ConeFileReader;
+import lt.esdc.shapes.reader.ConeReader;
 import lt.esdc.shapes.repository.ConeRepository;
 import lt.esdc.shapes.repository.impl.ConeRepositoryImpl;
 import lt.esdc.shapes.service.ConeLifecycleService;
@@ -20,13 +20,13 @@ public class Main {
 
     public static void main(String[] args) {
         Path filePath = Paths.get("resources/cones.txt");
-        ConeFileReader reader = new ConeFileReader();
+        ConeReader reader = new ConeReader();
         ConeValidator validator = new ConeValidator();
         ConeRepository repository = new ConeRepositoryImpl();
         ConeLifecycleService lifecycle = new ConeLifecycleService(repository);
 
         try {
-            List<Cone> cones = reader.readConesFromFile(filePath).stream()
+            List<Cone> cones = reader.read(filePath).stream()
                     .filter(validator::isValid)
                     .collect(Collectors.toList());
 

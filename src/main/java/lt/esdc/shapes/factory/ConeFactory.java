@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ConeFactory {
     private static final AtomicInteger ID_GENERATOR = new AtomicInteger(1);
 
-    public Cone create(double[] values) throws ConeException {
+    public Cone createFrom(double[] values) throws ConeException {
         if (values.length != 5) {
             throw new ConeException("Ожидалось 5 чисел: x y z radius height");
         }

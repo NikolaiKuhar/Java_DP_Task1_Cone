@@ -34,7 +34,7 @@ public class ConeRepositoryImpl implements ConeRepository {
     }
 
     @Override
-    public List<Cone> findAll() {
+    public List<Cone> getAll() {
         return Collections.unmodifiableList(cones);
     }
 
@@ -42,6 +42,13 @@ public class ConeRepositoryImpl implements ConeRepository {
     public List<Cone> query(Specification specification) {
         return cones.stream()
                 .filter(specification::specify)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Cone> sortBy(Comparator<Cone> comparator) {
+        return cones.stream()
+                .sorted(comparator)
                 .collect(Collectors.toList());
     }
 

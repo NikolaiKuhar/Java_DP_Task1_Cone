@@ -4,20 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6353e556-2bee-4422-b0ad-ad1f9c5a5619" name="Changes" comment="add new tests">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/observer/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/parser/ConeDataParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/impl/ConeRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeLifecycleService.java" afterDir="false" />
+    <list default="true" id="6353e556-2bee-4422-b0ad-ad1f9c5a5619" name="Changes" comment="refactor code and add new classes  and implementation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/parser/ConeParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/impl/ConeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/RadiusGreaterThanSpecification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeComparatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeDataParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeLifecycleServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ConeValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/WarehouseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_cones.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Cone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Cone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/entity/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/factory/ConeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/factory/ConeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/reader/ConeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/reader/ConeFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/observer/ConeObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/observer/ConeObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/parser/ConeDataParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/parser/ConeDataParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/reader/ConeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/reader/ConeReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/ConeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/ConeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/validator/LineValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/ConeParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/ConeParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/impl/ConeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/repository/impl/ConeRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeLifecycleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeLifecycleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/service/ConeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/IdSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/IdSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/VolumeRangeSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/specification/impl/VolumeRangeSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/validator/ConeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/validator/ConeValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/esdc/shapes/warehouse/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ConeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ConeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ConeSpecificationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ConeSpecificationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +150,8 @@
       <workItem from="1748886730380" duration="4794000" />
       <workItem from="1748973197284" duration="3686000" />
       <workItem from="1749056651585" duration="3823000" />
-      <workItem from="1749142532951" duration="7449000" />
+      <workItem from="1749142532951" duration="7841000" />
+      <workItem from="1749231387537" duration="6245000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -206,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749059244587</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor code and add new classes  and implementation">
+      <option name="closed" value="true" />
+      <created>1749151857143</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749151857143</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +259,7 @@
     <MESSAGE value="add exception" />
     <MESSAGE value="add observer, warehouse, repository, specification" />
     <MESSAGE value="add new tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new tests" />
+    <MESSAGE value="refactor code and add new classes  and implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor code and add new classes  and implementation" />
   </component>
 </project>

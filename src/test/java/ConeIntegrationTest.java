@@ -1,47 +1,55 @@
 import lt.esdc.shapes.entity.Cone;
-import lt.esdc.shapes.entity.Point;
+import lt.esdc.shapes.reader.ConeReader;
 import lt.esdc.shapes.repository.ConeRepository;
-import lt.esdc.shapes.specification.impl.VolumeRangeSpecification;
+import lt.esdc.shapes.repository.impl.ConeRepositoryImpl;
+import lt.esdc.shapes.service.ConeLifecycleService;
+import lt.esdc.shapes.validator.ConeValidator;
+import lt.esdc.shapes.warehouse.ConeParameters;
 import lt.esdc.shapes.warehouse.Warehouse;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.testng.Assert.assertTrue;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConeIntegrationTest {
 
-    @Test
-    public void testObserverUpdatesWarehouse() {
-        // given
-        Cone cone = new Cone("OBS_1", new Point(0, 0, 0), 2.0, 3.0);
-        Warehouse warehouse = Warehouse.getInstance();
-        cone.addObserver(warehouse);
-        warehouse.put(cone.getName(), cone);
+    private ConeRepository repository;
+    private ConeLifecycleService lifecycle;
+    private Warehouse warehouse;
 
-        double originalVolume = warehouse.get(cone.getName()).getVolume();
-
-        // when
-        cone.setHeight(6.0);
-        double updatedVolume = warehouse.get(cone.getName()).getVolume();
-
-        // then
-        assertTrue(updatedVolume > originalVolume);
+    @BeforeEach
+    void setUp() {
+        repository = new ConeRepositoryImpl();
+        lifecycle = new ConeLifecycleService(repository);
+        warehouse = Warehouse.getInstance();
     }
 
     @Test
-    public void testRepositoryQueryWithSpecification() {
-        // given
-        Cone cone = new Cone("REP_1", new Point(1, 1, 1), 2.0, 5.0);
-        Warehouse.getInstance().put(cone.getName(), cone);
-        ConeRepository repository = ConeRepository.getInstance();
-        repository.add(cone);
+    void shouldProcessValidConesFromFileEndToEnd() throws IOException {
+        ConeReader reader = new ConeReader();
+        ConeValidator validator = new ConeValidator();
 
-        VolumeRangeSpecification spec = new VolumeRangeSpecification(10, 100);
+        Path path = Path.of("src/test/resources/integration_cones.txt");
+        List<Cone> cones = reader.read(path).stream()
+                .filter(validator::isValid)
+                .toList();
 
-        // when
-        boolean contains = repository.query(spec).contains(cone);
+        for (Cone cone : cones) {
+            lifecycle.register(cone);
+        }
 
-        // then
-        assertTrue(contains);
+        // Проверка: зарегистрировано 2 конуса
+        assertEquals(2, repository.getAll().size());
+
+        for (Cone cone : cones) {
+            ConeParameters params = warehouse.get(cone.getId());
+            assertNotNull(params);
+            assertTrue(params.getVolume() > 0);
+            assertTrue(params.getSurfaceArea() > 0);
+        }
     }
 }
-
